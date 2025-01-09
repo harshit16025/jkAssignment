@@ -24,7 +24,9 @@
 
 ## Required
   1.node version v18.20.5
+  
   2.mysql version 8.*
+  
   3. install redish on your server
 
   
@@ -40,8 +42,9 @@ $ npm install
  
  2.create a database in mysql as mentioned in your .env file
 
- 3. "npm run migration:run" run this command to create tables in your database.
+ 3."npm run migration:run" run this command to create tables in your database.
 
+ 4.Please open the swager for api documentation url - http://localhost:3000/api
 
 ## Compile and run the project
 
