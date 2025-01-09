@@ -158,9 +158,8 @@ export class DocumentsController {
   })
   async getDocumentsDetail(@Param("id") id: number,@Query() params): Promise<IResponse> {
       try {
-          const expieryDate = await this.documentsService.getDocumentDetail(id);
-          // const expieryDate = {}
-          return new ResponseSuccess('Documents detal fetched successfully', expieryDate);
+          const result = await this.documentsService.getDocumentDetail(id);
+          return new ResponseSuccess('Documents detal fetched successfully', result);
         } catch (error) {
           this.logger.error(
             `Documents detail fetching failed: ${error?.message}`
