@@ -84,9 +84,8 @@ export class DocumentsService {
   /*
    * @param user
    */
-  public async updateDocument(userDto): Promise<any> {    
-    console.log(userDto)
-    return await this.documentsRepository.save(userDto);
+  public async updateDocument(documentDto): Promise<any> {    
+    return await this.documentsRepository.save(documentDto);
   }
 
   /**
