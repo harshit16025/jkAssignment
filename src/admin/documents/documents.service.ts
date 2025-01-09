@@ -4,7 +4,7 @@ import { Documents } from './documents.entity';
 import { Repository } from 'typeorm';
 import { QueryHelper } from 'src/common/helper/query.helper';
 import { TimeHelper } from 'src/common/helper/time.helper';
-import { paginate, Pagination, paginateRaw, paginateRawAndEntities } from 'nestjs-typeorm-paginate';
+import { Pagination, paginateRaw } from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class DocumentsService {
