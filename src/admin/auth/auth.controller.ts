@@ -142,7 +142,7 @@ export class AuthController {
      * @param RegisterUserDto
      */
     @Post('manageRole')
-    @ApiOperation({ summary: 'Logout' })
+    @ApiOperation({ summary: 'Manage Role' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiBody({type: ManageRoleDto})
     async manageRole(

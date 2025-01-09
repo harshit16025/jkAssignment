@@ -12,7 +12,8 @@ import { cwd, env } from 'process';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from './common/pipes/validation.pipe';
 import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
-
+import { DocumentsModule } from './admin/documents/documents.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
@@ -23,7 +24,18 @@ import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
       port: parseInt(env.REDIS_PORT),         // Redis port
       ttl: parseInt(env.REDIS_TTL),          // TTL for cache
     }),
+    ServeStaticModule.forRoot(
+      {
+        rootPath: '/data/jkassignment/documents',
+        serveRoot: '/document', // optional, default is '/'
+      },
+      {
+        rootPath: '/path/to/your/images', // Absolute path to your external image folder
+        serveRoot: '/images', // This will serve images under /images route
+      }
+  ),
     AuthModule,
+    DocumentsModule,
   ],
   controllers: [AppController],
   providers: [
@@ -43,7 +55,8 @@ export class AppModule implements NestModule {
     consumer
       .apply(AuthtokenMiddleware)
       .exclude(
-        { path: 'auth/login', method: RequestMethod.ALL },
+        // { path: 'auth/login', method: RequestMethod.ALL },
+         'document/(.*)',
       )
       .forRoutes('*');
   }
